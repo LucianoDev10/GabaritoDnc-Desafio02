@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="cadastro.css">
+</head>
+<body>
+    <div class="header">
+        <h2>DncWeather</h2>
+        <!-- Container para os títulos finais para agrupá-los juntos -->
+        <div class="header-content">
+            <p>Endereços</p>
+            <p>Tempo de previsão</p>
+        </div>
+    </div>
+    <div class="content">
+        <h2 class="titulo">Descubra mais com precisão:<br>
+            Previsões do tempo e endereços<br>
+            em tempo real
+        </h2>
+        <img src="assets/Nuvem.png" alt="Descrição da Imagem" width="100px">
+
+    </div>
+
+
+    <div class="container">
+        <form id="form-weather" onsubmit="event.preventDefault(); pegarDados();">
+            <div class="form-group">
+                <label for="nome">Primeiro Nome:</label>
+                <input type="text" id="nome" name="nome" placeholder="Insira seu primeiro nome" required>
+            </div>
+            <div class="form-group">
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" placeholder="Insira seu E-mail" required>
+            </div>
+            <div class="form-group">
+                <label for="cep">Digite o CEP:</label>
+                <input type="text" id="cep" name="cep" placeholder="Insira seu cep" required>
+            </div>
+            <div class="form-group grouped-inputs">
+                <label for="latlng">Digite a longitude e latitude para saber a previsão:</label>
+                <input type="text" id="latitude" name="latitude" placeholder="Latitude" required style="width: 160px;">
+                <input type="text" id="longitude" name="longitude" placeholder="Longitude" required style="width: 160px;">
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Acessar">
+            </div>
+        </form>
+
+    </div>
+
+    <div class="content2">
+        <h2 class="titulo">Resultado da busca por cep:
+        </h2>
+        <img src="assets/Cep (2).png" alt="Descrição da Imagem" width="50px">
+
+    </div>
+
+    <table class="custom-table">
+        <tr>
+            <th>Logradouro/nome</th>
+            <th>Bairro/Distrito</th>
+            <th>Localidade/UF</th>
+        </tr>
+        <tr>
+            <td id="Rua"></td>
+            <td id="Bairro"></td>
+            <td id="Uf"></td>
+        </tr>
+    </table>
+
+    
+    <div class="content2">
+        <h2 class="titulo">Previsão do tempo na região:
+        </h2>
+        <img src="assets/Nuvem (2).png" alt="Descrição da Imagem" width="50px">
+    </div>
+    <div class="titulo-temperatura">
+        <p style="text-align: center; font-weight: 700;" id="resultado-previsao"></p>
+    </div>
+    </div>
+    <div class="footer">
+        <p>Termos de Uso | Política de Privacidade</p>
+    </div>
+
+    <div id="resultado-cep"></div>
+
+    <script>
+    
+    async function pegarDados() {
+    await pegarcep();
+    await pegarPrevisao();
+}
+
+async function pegarcep() {
+    const cep = document.getElementById('cep').value;
+    try {
+        const response = await fetch(`https://viacep.com.br/ws/${cep}/json`);
+        const data = await response.json();
+        if (data.erro) {
+            throw new Error('CEP não encontrado.');
+        }
+        // Aqui você pode atualizar a DOM com os dados do CEP
+        document.getElementById('Rua').textContent = ` ${data.logradouro}`;
+        document.getElementById('Bairro').textContent = ` ${data.bairro}`;
+
+        document.getElementById('Uf').textContent = ` ${data.uf}`;
+
+
+
+    } catch (error) {
+        document.getElementById('resultado-cep').textContent = error.message;
+    }
+}
+
+async function pegarPrevisao() {
+    const lat = document.getElementById('latitude').value;
+    const lon = document.getElementById('longitude').value;
+    try {
+        const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&hourly=temperature_2m`);
+        const data = await response.json();
+        // Aqui você pode atualizar a DOM com os dados da previsão do tempo
+        document.getElementById('resultado-previsao').textContent = `Previsão de temperatura: ${data.hourly.temperature_2m[0]} °C`;
+
+               console.log(data);
+    } catch (error) {
+        document.getElementById('resultado-previsao').textContent = error.message;
+    }
+}
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,167 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #F2F2F2;
+
+}
+
+.header {
+    display: flex;
+    align-items: center; /* Centraliza os itens verticalmente dentro do header */
+    justify-content: space-between; /* Espaça os itens dentro do header */
+    background-color: #007bff;
+    color: white;
+        /* Cor do texto */
+}
+.footer {
+    margin-top: 100px;
+    background-color: #007bff;
+    color: white;
+}
+.footer p {  
+    text-align: end;
+    font-weight: 700;
+    margin-right: 20px;
+}
+.header h2 {
+    margin-right: auto; /* Garante que o h2 fique à esquerda */
+    margin-left: 20px;
+}
+.header-content {
+    display: flex; /* Aplica Flexbox aos elementos dentro da div */
+    align-items: center; /* Centraliza os itens verticalmente */
+}
+.header-content p {
+    margin-left: 20px; /* Adiciona espaço entre os parágrafos */
+    margin-right: 20px;
+    font-weight: 700;
+}
+
+.content {
+    margin-top: 50px;
+    margin-bottom: 100px;
+
+    display: flex;
+    align-items: center; /* Centraliza verticalmente os itens dentro da div */
+    justify-content: center; /* Centraliza horizontalmente os itens dentro da div */
+    text-align: left;
+}
+.content img {
+    
+    max-width: 100%; /* Faz com que a imagem seja responsiva e se ajuste ao container */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-left: 30px;
+}
+
+.content2 {
+    margin-top: 80px;
+    margin-bottom: 20px;
+
+    display: flex;
+    align-items: center; /* Centraliza verticalmente os itens dentro da div */
+    justify-content: center; /* Centraliza horizontalmente os itens dentro da div */
+    text-align: left;
+}
+
+.content2 img {
+    
+    max-width: 100%; /* Faz com que a imagem seja responsiva e se ajuste ao container */
+    height: auto; /* Mantém a proporção da imagem */
+    margin-left: 10px;
+}
+.titulo {
+    margin: 0; /* Remove margem padrão do título para melhor controle */
+}
+.container {
+    margin: auto;
+    width: 500px;
+    height: 500px;
+    background-color: white;
+    display: flex;
+    justify-content: center; /* Centraliza verticalmente */
+    align-items: center; /* Centraliza horizontalmente */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.form-group {
+    
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #333;
+}
+.form-group input {
+    background-color: #F2F2F2;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+
+.form-group input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+.form-group input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+
+.custom-table {
+    margin-top: 10px;
+    margin: 0 auto;
+    border-spacing: 0;
+    width: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona sombra para a tabela */
+}
+
+.custom-table th, .custom-table td {
+    text-align: left;
+    padding: 12px 20px;
+}
+
+.custom-table th {
+    background-color: #007bff; /* Cor azul para cabeçalho */
+    color: white;
+}
+
+/* Aplica bordas arredondadas apenas para o primeiro e último cabeçalho TH */
+.custom-table th:first-child {
+    border-top-left-radius: 10px; /* Arredonda cantos superiores esquerdos */
+}
+
+.custom-table th:last-child {
+    border-top-right-radius: 10px; /* Arredonda cantos superiores direitos */
+}
+
+.custom-table tr:last-child td:first-child {
+    border-bottom-left-radius: 10px; /* Arredonda cantos inferiores esquerdos */
+}
+
+.custom-table tr:last-child td:last-child {
+    border-bottom-right-radius: 10px; /* Arredonda cantos inferiores direitos */
+}
+
+
+.titulo-temperatura {
+    width: 500px;
+    background-color: white;
+    margin: auto;
+        /* A mágica que centraliza a div */
+    /* As seguintes propriedades são opcionais e para estética */
+    border: 1px solid #007bff;
+        /* Adiciona uma borda sólida azul com 2px de espessura */
+    border-radius: 10px;
+}
